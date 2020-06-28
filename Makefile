@@ -36,3 +36,9 @@ test:
 
 clean: 
 	py3clean .
+
+get-minio:
+	docker pull minio/minio
+
+run-minio:
+	docker run -p 9000:9000 minio/minio server /data

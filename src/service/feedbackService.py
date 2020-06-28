@@ -3,6 +3,7 @@ from typing import List
 from src.model.feedback import Feedback
 from src.utils.logger import Logger
 from src.database.daos.feedback_dao import FeedbackDao
+from src.jobs.upload_logs_job import UploadLogsToMinio
 
 class FeedbackService:
 
@@ -11,7 +12,7 @@ class FeedbackService:
         logger = Logger(cls.__name__)
         logger.info(f'Feedback received- {{reference: {feedback.reference}, name: {feedback.name}}}')
         logger.debug(f'Feedback received- {feedback}')
-
+        UploadLogsToMinio.upload_files_to_minio()
         await FeedbackDao.insert_feedback(feedback)
 
     @classmethod

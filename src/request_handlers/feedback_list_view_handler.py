@@ -9,4 +9,4 @@ class FeedbackListViewHandler(RequestHandler):
         #if not reference: send error page
         feedbacks = await FeedbackService.get_all_feedback(reference)
         loader = Loader(self.get_template_path())
-        self.write(loader.load('feedback_table.html').generate(feedbacks=feedbacks))
+        self.write(loader.load('feedback_table.html').generate(feedbacks=feedbacks, reference=reference))
