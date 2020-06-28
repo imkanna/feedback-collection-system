@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback - table </title>    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body >
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for feedback in feedbacks %}
+        {% block feedback %}
+            <tr>
+                <td>{{ escape(feedback.name) }}</td>
+                <td>{{ escape(feedback.message) }}</td>
+            </tr>
+        {% end %}
+      {% end %}
+  </tbody>
+</table>
+</body>
+</html>
